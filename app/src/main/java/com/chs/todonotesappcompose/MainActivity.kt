@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -24,6 +25,7 @@ class MainActivity : ComponentActivity() {
     private lateinit var navController: NavHostController
     private val todoNotesViewModel: TodoNotesViewModel by viewModels()
 
+    @OptIn(ExperimentalMaterialApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -48,6 +50,5 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     TodoNotesAppComposeTheme {
-        Greeting("Android")
     }
 }

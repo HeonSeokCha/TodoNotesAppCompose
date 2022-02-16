@@ -50,13 +50,30 @@ fun ListScreen (
         scaffoldState = scaffoldState,
         topBar = {
             ListAppBar(
-
+                todoNotesViewModel = todoNotesViewModel,
+                searchAppBarState = searchAppBarState,
+                searchTextState = searchTextState
             )
+        },
+        content = {
+            ListContent(
+                allTasks = allTasks,
+                searchedTask = searchedTask,
+                lowPriority = lowPriority,
+                highPriority = highPriority,
+                searchAppBarState = searchAppBarState,
+                sortState = sortState,
+                onSwipeToDelete = { action, task ->
+                    todoNotesViewModel.action.value = action
+                    todoNotesViewModel.updateTaskField(selectedTask = task)
+                },
+                navigateToTaskScreen = navigateToTaskScreen
+            )
+        },
+        floatingActionButton = {
+            ListFab(onFabClicked = navigateToTaskScreen)
         }
-    ) {
-
-    }
-
+    )
 }
 
 @Composable

@@ -22,6 +22,7 @@ import com.chs.todonotesappcompose.components.DisplayAlertDialog
 import com.chs.todonotesappcompose.components.PriorityItem
 import com.chs.todonotesappcompose.database.model.Priority
 import com.chs.todonotesappcompose.ui.theme.*
+import com.chs.todonotesappcompose.utils.Action
 import com.chs.todonotesappcompose.utils.SearchAppBarState
 import com.chs.todonotesappcompose.utils.TrailingIconState
 import com.chs.todonotesappcompose.viewmodel.TodoNotesViewModel
@@ -34,7 +35,33 @@ fun ListAppBar(
 ) {
     when (searchAppBarState) {
         SearchAppBarState.CLOSED -> {
-            DefaulListA
+            DefaultListAppBar(
+                onSearchClicked = {
+                    todoNotesViewModel.searchAppBarState.value = SearchAppBarState.OPENED
+                },
+                onSortClicked =  {
+                    todoNotesViewModel.persisSortState(it)
+                },
+                onDeleteAllConfirmed = {
+                    todoNotesViewModel.action.value = Action.DELETE_ALL
+                }
+            )
+        }
+        else -> {
+            SearchAppBar(
+                text = searchTextState,
+                onTextChange = { newText ->
+                    todoNotesViewModel.searchTextState.value = newText
+                },
+                onCloseClicked = {
+                     todoNotesViewModel.searchAppBarState.value =
+                         SearchAppBarState.CLOSED
+                    todoNotesViewModel.searchTextState.value = ""
+                },
+                onSearchClicked = {
+                    todoNotesViewModel.searchDatabase(searchQuery = it)
+                }
+            )
         }
     }
 }
@@ -53,8 +80,13 @@ fun DefaultListAppBar(
             )
         },
         actions = {
-            ListAp
-        }
+            ListAppBarActions(
+                onSearchClicked = onSearchClicked,
+                onSortClicked = onSortClicked,
+                onDeleteAllConfirmed = onDeleteAllConfirmed
+            )
+        },
+        backgroundColor = MaterialTheme.colors.topAppBarBackgroundColor
     )
 }
 
@@ -256,7 +288,7 @@ fun SearchAppBar(
                     onSearchClicked(text)
                 }
             ),
-            color = TextFieldDefaults.textFieldColors(
+            colors = TextFieldDefaults.textFieldColors(
                 cursorColor = MaterialTheme.colors.topAppBarContentColor,
                 focusedIndicatorColor = Color.Transparent,
                 disabledIndicatorColor = Color.Transparent,

@@ -6,5 +6,5 @@ import com.chs.todonotesappcompose.database.model.ToDoTask
 
 @Database(entities = [ToDoTask::class], version = 1, exportSchema = false)
 abstract class ToDoDatabase: RoomDatabase() {
-    abstract fun toDoDao(): ToDoDatabase
+    abstract fun toDoDao(): ToDoDao
 }

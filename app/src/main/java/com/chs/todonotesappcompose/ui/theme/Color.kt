@@ -20,20 +20,20 @@ val NonePriorityColor = MediumGray
 
 val Colors.taskItemTextColor : Color
     @Composable
-    get() = if (isLight) DarkGray else LightGray
+    get() = DarkGray
 
 val Colors.taskItemBackgroundColor : Color
     @Composable
-    get() = if (isLight) Color.White else DarkGray
+    get() = Color.White
 
 val Colors.fabBackgroundColor : Color
     @Composable
-    get() = if (isLight) Purple500 else Purple700
+    get() = Purple500
 
 val Colors.topAppBarContentColor : Color
     @Composable
-    get() = if (!isLight) Color.White else DarkGray
+    get() = Color.White
 
 val Colors.topAppBarBackgroundColor : Color
     @Composable
-    get() = if (isLight) Purple500 else Color.Black
+    get() = Purple500
