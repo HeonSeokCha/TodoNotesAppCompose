@@ -1,5 +1,6 @@
 package com.chs.todonotesappcompose.view
 
+import android.util.Log
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -110,9 +111,11 @@ fun DisplaySnackBar(
                     message = setMessage(action = action, taskTitle = taskTitle),
                     actionLabel = setActionLabel(action)
                 )
-                undoDeDeletedTask(action,
+                undoDeDeletedTask(
+                    action,
                     snackBarResult = snackBarResult,
-                    onUndoClicked = onUndoClicked)
+                    onUndoClicked = onUndoClicked
+                )
             }
         }
     }

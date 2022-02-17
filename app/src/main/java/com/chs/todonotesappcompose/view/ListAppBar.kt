@@ -102,7 +102,7 @@ fun ListAppBarActions(
         message = stringResource(id = R.string.delete_all_tasks_confirmation),
         openDialog = openDialog,
         closeDialog = { openDialog = false },
-        onYesClicked = { onDeleteAllConfirmed }
+        onYesClicked = { onDeleteAllConfirmed() }
     )
 
     SearchAction(onSearchClicked = onSearchClicked)
@@ -189,7 +189,7 @@ fun DeleteAllAction(
             DropdownMenuItem(
                 onClick = {
                     expand = false
-                    onDeleteAllConfirmed
+                    onDeleteAllConfirmed()
                 }
             ) {
                 Text(

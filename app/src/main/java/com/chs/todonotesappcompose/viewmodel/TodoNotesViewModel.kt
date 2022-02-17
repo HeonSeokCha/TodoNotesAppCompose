@@ -1,5 +1,6 @@
 package com.chs.todonotesappcompose.viewmodel
 
+import android.util.Log
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -25,6 +26,7 @@ class TodoNotesViewModel @Inject constructor(
     private val repository: ToDoRepository,
     private val dataStoreRepository: DataStoreRepository
 ) : ViewModel() {
+
     val action: MutableState<Action> = mutableStateOf(Action.NO_ACTION)
     val id: MutableState<Int> = mutableStateOf(0)
     val title: MutableState<String> = mutableStateOf("")
@@ -132,6 +134,7 @@ class TodoNotesViewModel @Inject constructor(
     private fun updateTask() {
         viewModelScope.launch(Dispatchers.IO) {
             val toDoTask = ToDoTask(
+                id = id.value,
                 title = title.value,
                 description = description.value,
                 priority = priority.value
@@ -143,6 +146,7 @@ class TodoNotesViewModel @Inject constructor(
     private fun deleteTask() {
         viewModelScope.launch(Dispatchers.IO) {
             val toDoTask = ToDoTask(
+                id = id.value,
                 title = title.value,
                 description = description.value,
                 priority = priority.value

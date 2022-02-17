@@ -162,7 +162,7 @@ fun DeleteAction(
 fun UpdateAction(
     onUpdateClicked : (Action) -> Unit
 ) {
-    IconButton(onClick = { onUpdateClicked(Action.UPDATE ) }) {
+    IconButton(onClick = { onUpdateClicked(Action.UPDATE) }) {
         Icon(
             imageVector = Icons.Filled.Check,
             contentDescription = stringResource(R.string.update_icon),

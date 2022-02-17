@@ -18,7 +18,7 @@ import com.chs.todonotesappcompose.viewmodel.TodoNotesViewModel
 @SuppressLint("UnrememberedMutableState")
 @ExperimentalMaterialApi
 fun NavGraphBuilder.listComposable(
-    navigateToTaskScreen: (Int) -> Unit,
+    navigateToTaskScreen: (taskId: Int) -> Unit,
     todoNotesViewModel: TodoNotesViewModel
 ) {
     composable(
