@@ -132,7 +132,7 @@ fun SortAction(
         onClick = { expanded = true }
     ) {
         Icon(
-            painter = painterResource(id = R.drawable.ic_launcher_foreground),
+            painter = painterResource(id = R.drawable.ic_filter_list),
             contentDescription = stringResource(id = R.string.sort_action),
             tint = MaterialTheme.colors.topAppBarContentColor
         )
@@ -178,7 +178,7 @@ fun DeleteAllAction(
         onClick = { expand = true }
     ) {
         Icon(
-            painter = painterResource(id = R.drawable.ic_launcher_foreground),
+            painter = painterResource(id = R.drawable.ic_vertical_menu),
             contentDescription = stringResource(id = R.string.delete_all_action),
             tint = MaterialTheme.colors.topAppBarContentColor
         )

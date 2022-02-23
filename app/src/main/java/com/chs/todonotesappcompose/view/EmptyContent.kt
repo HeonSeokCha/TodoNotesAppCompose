@@ -25,7 +25,7 @@ fun EmptyContent() {
         verticalArrangement = Arrangement.Center
     ) {
         Icon(
-            painter = painterResource(id = R.drawable.ic_launcher_foreground),
+            painter = painterResource(id = R.drawable.ic_sad_face),
             contentDescription = "No data",
             modifier = Modifier
                 .size(120.dp),
